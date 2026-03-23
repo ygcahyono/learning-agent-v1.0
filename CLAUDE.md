@@ -21,6 +21,7 @@ GitHub repo: https://github.com/ygcahyono/learning-agent-v1.0.git
 | **ghuntley.com/loop/** | Everything is a Ralph loop. Monolithic agents over multi-agent. Single process, one task per loop. Orchestrator pattern. |
 | **ghuntley.com/agent/** | Workshop transcript. Context windows (~176k usable from 200k advertised). MCP allocation. Model selection (Opus for reasoning, Sonnet for efficiency). |
 | **banay.me backpressure article** | Backpressure = automated feedback (tests, linters, type systems) that lets agents self-correct without human intervention. Without it, you waste human time on syntax errors instead of architecture decisions. |
+| **ghuntley.com/pressure/** | Endorses Moss's banay.me article. Adds tuning metaphor: backpressure needs calibration — too little and hallucinations pass, too much and the wheel stops. Pre-commit hooks as favorite mechanism. "If you aren't capturing your back-pressure then you are failing as a software engineer." |
 
 ### Previously paywalled sources (NOW AVAILABLE as PDFs in references/)
 
@@ -42,7 +43,7 @@ Every file has a **source fidelity score** — what percentage is grounded in ac
 | `README.md` | — | — | Update source access table (both PDFs now ✅). Add stdlib concept explanation. Add the `/specs + /stdlib + loopback + evaluation` formula. Adjust all fidelity scores to new values. |
 | `.agents/specs/README.md` | 70% | 85% | Major update. Now have actual specs + stdlib methodology. Add stdlib concept and how it maps to learning. Update concept mapping table with stdlib row. Explain the formula applied to learning. |
 | `.agents/rules/timestamp-generation.md` | 90% | 90% | No change needed from PDFs. |
-| `.agents/specs/grading-workflow.md` | 55% | 65% | Backpressure is now better grounded with the formula. Update sourced sections. Reduce `<!-- YOUR INPUT NEEDED -->` blocks where we now have answers. |
+| `.agents/specs/grading-workflow.md` | 55% | 70% | Backpressure is now better grounded with the formula and the tuning metaphor from ghuntley.com/pressure/. Update sourced sections. Reduce `<!-- YOUR INPUT NEEDED -->` blocks where we now have answers. |
 | `.agents/specs/interactive-quiz.md` | 40% | 55% | Loopback pattern ("keep going until implemented" = "keep quizzing until understood") now directly sourced. Update accordingly. |
 | `.agents/specs/quiz-workflow.md` | 45% | 60% | Same loopback grounding. Evaluation as part of the formula now sourced. |
 | `.agents/specs/progress-tracking.md` | 60% | 70% | SPECS.md overview concept maps to having a progress overview. |

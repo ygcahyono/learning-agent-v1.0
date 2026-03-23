@@ -1,6 +1,6 @@
 # Spec: Grading Workflow
 
-> **Source fidelity: 65%** — Backpressure philosophy is well-documented in accessible Huntley posts. "Capture the why," "no placeholders," and "backpressure rejects invalid output" are directly sourced. Grading is now grounded as the "evaluation" component of the `/specs + /stdlib + loopback + evaluation` formula (sourced from ghuntley.com/specs/). The 1-5 scoring scale, specific grading process steps, and feedback format are my design.
+> **Source fidelity: 70%** — Backpressure philosophy is well-documented in accessible Huntley posts. "Capture the why," "no placeholders," and "backpressure rejects invalid output" are directly sourced. Grading is now grounded as the "evaluation" component of the `/specs + /stdlib + loopback + evaluation` formula (sourced from ghuntley.com/specs/). The tuning metaphor from ghuntley.com/pressure/ adds calibration nuance. The 1-5 scoring scale, specific grading process steps, and feedback format are my design.
 
 ## Purpose
 
@@ -31,8 +31,11 @@ From banay.me (search snippets):
 - "You should only be rejecting work based on high-level architecture, business logic, or user experience issues. If you are rejecting work because of syntax errors or failing tests, you are wasting your back pressure."
   → Learning equivalent: grade on understanding depth, not keyword presence.
 
-From ghuntley.com/pressure/ (partial access):
+From ghuntley.com/pressure/ (now fully accessible):
 - "Software engineering is now about preventing failure scenarios and preventing the wheel from turning over through back pressure to the generative function."
+- **The tuning insight:** Backpressure needs calibration — "just enough" resistance. Too little and hallucinations pass through unchallenged. Too much and the wheel spins too slow (or stops entirely). Pre-commit hooks are Huntley's favorite concrete mechanism: humans found them annoying, but agents don't care about the slowdown.
+- "If you aren't capturing your back-pressure then you are failing as a software engineer."
+- **Applied to learning:** Quiz difficulty and grading strictness are calibration knobs. Too lenient → shallow answers pass as "understood." Too strict → learner gets stuck on technicalities and loses momentum. The grading scale and thresholds should be tuned over time, not fixed dogmatically.
 
 ## Grading Principles (sourced)
 

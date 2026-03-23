@@ -21,9 +21,9 @@ The original `.agents/` folder was not open-sourced. This repo is a reconstructi
 | Don't Waste Your Backpressure (Moss) | https://banay.me/dont-waste-your-backpressure/ | ⚠️ Search snippets only | Referenced by Huntley, core backpressure philosophy |
 | Specs methodology | https://ghuntley.com/specs/ | ✅ PDF in references/ | Specs = functional specifications, one per domain topic. SPECS.md overview. Loopback prompt. The formula. |
 | Stdlib methodology | https://ghuntley.com/stdlib/ | ✅ PDF in references/ | Stdlib = library of prompting rules composed like unix pipes. Rule structure, authoring workflow, exponential growth. |
-| Don't Waste Your Backpressure (Huntley) | https://ghuntley.com/pressure/ | ❌ Paywalled | Huntley's own backpressure elaboration |
+| Don't Waste Your Backpressure (Huntley) | https://ghuntley.com/pressure/ | ✅ PDF in references/ | Endorses Moss's banay.me article. Adds tuning metaphor: backpressure needs calibration — too little and hallucinations pass, too much and the wheel stops. Pre-commit hooks as favorite mechanism. "If you aren't capturing your back-pressure then you are failing as a software engineer." |
 
-**Bottom line:** The Ralph post, the Playbook repo, and now the specs and stdlib PDFs give us the full picture. The remaining gap is Huntley's backpressure elaboration (ghuntley.com/pressure/, still paywalled) and the specific adaptation of these coding-focused patterns to learning, which is our interpretation.
+**Bottom line:** The Ralph post, the Playbook repo, and now the specs, stdlib, and backpressure PDFs give us the full picture. All previously paywalled sources are now accessible. The remaining gap is the specific adaptation of these coding-focused patterns to learning, which is our interpretation.
 
 ### The Formula (from ghuntley.com/specs/)
 
@@ -57,7 +57,7 @@ Every file in this repo has a **source fidelity score** — what percentage is d
 | `README.md` | Overview of the system, how files relate, how to use it | **85%** | The mapping from Ralph concepts to learning concepts is now well-grounded. The specs post confirms SPECS.md overview format and the formula. The stdlib post confirms behavioral rules concept. The 15% gap: specific application to learning (vs. coding) is our interpretation. |
 | `interactive-quiz.md` | Socratic Q&A tutoring — agent asks, learner answers, agent corrects and expands | **55%** | The X post confirms WHAT this does. The loopback pattern from the specs post ("keep going until implemented" = keep quizzing until understood) now directly grounds the iterative approach. The HOW (specific workflow steps, question types) is our extrapolation. |
 | `quiz-workflow.md` | End-to-end quiz lifecycle — generation, administration, adaptive difficulty | **60%** | The X post confirms adaptive quiz behavior. The loopback and evaluation pillars from the formula now directly ground the quiz loop. The specific generation rules, difficulty tiers, and thresholds are our design. |
-| `grading-workflow.md` | How to grade quiz responses — the backpressure mechanism | **65%** | Backpressure philosophy is well-documented. Grading is now grounded as the "evaluation" component of the formula. The 1-5 scoring scale and specific grading process are our design. |
+| `grading-workflow.md` | How to grade quiz responses — the backpressure mechanism | **70%** | Backpressure philosophy is well-documented. Grading is now grounded as the "evaluation" component of the formula. The tuning metaphor from ghuntley.com/pressure/ adds calibration nuance. The 1-5 scoring scale and specific grading process are our design. |
 | `progress-tracking.md` | Persistent state file tracking learner competency across sessions | **70%** | Directly mapped from IMPLEMENTATION_PLAN.md. The specs post confirms the SPECS.md overview pattern (table linking to details) which maps to the progress overview. The specific table structure and cleanup rules are our design. |
 | `practice-labs.md` | Hands-on lab exercise generation with verification | **40%** | The X post confirms practice labs exist. The loopback pattern applies. The specific lab types, generation rules, and file format are largely our design. |
 | `technical-verification.md` | Ensuring learning materials are technically accurate | **65%** | The self-improvement loop from the stdlib post ("Look at rules. What's missing?") now fully grounds the meta-verification pattern. The specific verification methods are our extrapolation. |
@@ -127,7 +127,7 @@ Marked with `<!-- YOUR INPUT NEEDED -->` inside the relevant files.
 
 4. **Adaptation thresholds** — The specific numbers (80% mastery, 50% weakness escalation) are our design. The stdlib approach says: start with rough values, observe failures, author rules to refine. ~45% accuracy expected initially — frequent steering needed.
 
-5. **Huntley's backpressure post** — ghuntley.com/pressure/ remains paywalled. We have the core philosophy from banay.me and the other posts, but Huntley's own elaboration may contain additional insights.
+5. ~~**Huntley's backpressure post**~~ — **Resolved.** ghuntley.com/pressure/ is now accessible as a PDF. The post mostly endorses Moss's banay.me article. The genuinely new insight is the **tuning metaphor**: backpressure needs calibration — too little resistance and hallucinations pass through, too much and progress stalls. Applied to learning: quiz difficulty and grading strictness must be tuned, not just turned on.
 
 ---
 
