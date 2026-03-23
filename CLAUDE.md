@@ -20,7 +20,7 @@ GitHub repo: https://github.com/ygcahyono/learning-agent-v1.0.git
 | **github.com/ghuntley/how-to-ralph-wiggum** | Full Ralph Playbook: 3 phases (define requirements → planning loop → building loop), PROMPT templates for plan and build modes, AGENTS.md as operational guide, guidelines (context is precious, simplicity wins, markdown over JSON, tune like a guitar), enhanced loop.sh script, file structure |
 | **ghuntley.com/loop/** | Everything is a Ralph loop. Monolithic agents over multi-agent. Single process, one task per loop. Orchestrator pattern. |
 | **ghuntley.com/agent/** | Workshop transcript. Context windows (~176k usable from 200k advertised). MCP allocation. Model selection (Opus for reasoning, Sonnet for efficiency). |
-| **banay.me backpressure article** | Backpressure = automated feedback (tests, linters, type systems) that lets agents self-correct without human intervention. Without it, you waste human time on syntax errors instead of architecture decisions. |
+| **banay.me backpressure article** | Layered backpressure model: each layer (compiler, type system, MCP servers, proof assistants) pushes human feedback further right, handling higher complexity. Loop agents until inconsistencies stamped out. Spec-driven backpressure (generate from schema, compare to intent). "Are you wasting your back pressure?" |
 | **ghuntley.com/pressure/** | Endorses Moss's banay.me article. Adds tuning metaphor: backpressure needs calibration — too little and hallucinations pass, too much and the wheel stops. Pre-commit hooks as favorite mechanism. "If you aren't capturing your back-pressure then you are failing as a software engineer." |
 
 ### Previously paywalled sources (NOW AVAILABLE as PDFs in references/)

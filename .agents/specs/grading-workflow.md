@@ -26,10 +26,11 @@ From ghuntley.com/ralph/:
 - "If functionality is missing then it's your job to add it as per the application specifications."
   → Learning equivalent: if understanding is missing, the agent must address it, not skip it.
 
-From banay.me (search snippets):
-- "Back pressure helps the agent identify mistakes as it progresses"
-- "You should only be rejecting work based on high-level architecture, business logic, or user experience issues. If you are rejecting work because of syntax errors or failing tests, you are wasting your back pressure."
-  → Learning equivalent: grade on understanding depth, not keyword presence.
+From banay.me (full article now available):
+- **Layered backpressure model:** Each layer (compiler feedback → type systems → MCP servers → proof assistants) pushes the human feedback curve further right, letting you handle higher complexity tasks. Without backpressure, "you're going to be stuck spending your time telling the agent about each mistake it makes yourself."
+- **Loop agents pattern:** "You can loop agents until they have stamped out all of the inconsistencies and issues for you."
+  → Learning equivalent: loop quiz sessions until all gaps are closed — same pattern.
+- Grade on understanding depth, not keyword presence. The backpressure should catch conceptual errors, not surface formatting.
 
 From ghuntley.com/pressure/ (now fully accessible):
 - "Software engineering is now about preventing failure scenarios and preventing the wheel from turning over through back pressure to the generative function."
