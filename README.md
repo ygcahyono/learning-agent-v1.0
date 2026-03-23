@@ -19,11 +19,24 @@ The original `.agents/` folder was not open-sourced. This repo is a reconstructi
 | Everything is a Ralph Loop | https://ghuntley.com/loop/ | ✅ Full access | Monolithic agents, orchestrator pattern |
 | How to Build a Coding Agent | https://ghuntley.com/agent/ | ✅ Full access | Workshop transcript, context windows, model selection |
 | Don't Waste Your Backpressure (Moss) | https://banay.me/dont-waste-your-backpressure/ | ⚠️ Search snippets only | Referenced by Huntley, core backpressure philosophy |
-| Specs methodology | https://ghuntley.com/specs/ | ❌ Paywalled | How to write specs from JTBD conversations |
-| Stdlib methodology | https://ghuntley.com/stdlib/ | ❌ Paywalled | How to write standard libraries to steer agent behavior |
+| Specs methodology | https://ghuntley.com/specs/ | ✅ PDF in references/ | Specs = functional specifications, one per domain topic. SPECS.md overview. Loopback prompt. The formula. |
+| Stdlib methodology | https://ghuntley.com/stdlib/ | ✅ PDF in references/ | Stdlib = library of prompting rules composed like unix pipes. Rule structure, authoring workflow, exponential growth. |
 | Don't Waste Your Backpressure (Huntley) | https://ghuntley.com/pressure/ | ❌ Paywalled | Huntley's own backpressure elaboration |
 
-**Bottom line:** The Ralph post and the Playbook repo gave me the structural principles (loop, specs, backpressure, progress state, one task per loop, no placeholders). The paywalled specs/stdlib posts mean I could NOT see how Huntley specifically structures individual spec files or stdlib entries. That gap is reflected in the fidelity percentages below.
+**Bottom line:** The Ralph post, the Playbook repo, and now the specs and stdlib PDFs give us the full picture. The remaining gap is Huntley's backpressure elaboration (ghuntley.com/pressure/, still paywalled) and the specific adaptation of these coding-focused patterns to learning, which is our interpretation.
+
+### The Formula (from ghuntley.com/specs/)
+
+```
+/specs + /stdlib + loopback + evaluation = good outcomes
+```
+
+- **`/specs`** — Functional specifications, one per domain topic (`specs/`)
+- **`/stdlib`** — Behavioral rules that steer agent behavior (`stdlib/`)
+- **`loopback`** — "Keep going until implemented." Restart context, same prompt, repeatedly.
+- **`evaluation`** — Backpressure. Tests/build in coding; grading/quizzes in learning.
+
+The key loopback prompt from the specs post: "Study @SPECS.md for functional specifications. Study @.cursor for technical requirements. Implement what is not implemented. Create tests. Run build and verify."
 
 ---
 
@@ -35,19 +48,29 @@ Every file in this repo has a **source fidelity score** — what percentage is d
 
 | File | Purpose | Fidelity | Explanation |
 |------|---------|----------|-------------|
-| `timestamp-generation.md` | How to name quiz files with timestamps | **90%** | The original X post screenshot clearly shows timestamped filenames. The ISO 8601 format and naming convention is directly visible. The 10% gap: I inferred the specific rules (timezone handling, hyphen conventions) from the file names in the screenshot. |
+| `timestamp-generation.md` | How to name quiz files with timestamps | **90%** | The original X post screenshot clearly shows timestamped filenames. The ISO 8601 format and naming convention is directly visible. The 10% gap: specific rules (timezone handling, hyphen conventions) inferred from the file names in the screenshot. |
 
 ### `.agents/specs/`
 
 | File | Purpose | Fidelity | Explanation |
 |------|---------|----------|-------------|
-| `README.md` | Overview of the system, how files relate, how to use it | **70%** | The mapping from Ralph concepts to learning concepts is solid (specs→workflow specs, IMPLEMENTATION_PLAN→progress, backpressure→grading). The usage instructions and "how it works" loop are my interpretation of how you'd apply Ralph to learning. The 30% gap: I couldn't see Huntley's actual specs README to know how he introduces a specs folder. |
-| `interactive-quiz.md` | Socratic Q&A tutoring — agent asks, learner answers, agent corrects and expands | **40%** | The X post author explicitly described preferring interactive learning where "the agent asks a question and lets me try to answer with my current existing knowledge and then expand & correct it, kinda like a personal tutor." That's the WHAT. The HOW (specific workflow steps, question types, anti-patterns, session structure) is my extrapolation applying Huntley's principles (one task per loop, no placeholders, backpressure). I could not access the paywalled specs post to see how Huntley structures a spec file internally. |
-| `quiz-workflow.md` | End-to-end quiz lifecycle — generation, administration, adaptive difficulty | **45%** | The X post confirms: quizzes exist, they're mostly open-ended, they get graded, and the next quiz adapts based on grades ("it adjusts the next quiz based on the grade it gave me, so eventually it stops generating quizzes on stuff I'm already decent at"). That's the WHAT. The specific generation rules, difficulty tiers, adaptation thresholds (80%, 50%), and file format are my design applying Huntley's principles. |
-| `grading-workflow.md` | How to grade quiz responses — the backpressure mechanism | **55%** | Huntley's backpressure philosophy is well-documented in accessible posts: "capture the why," "no placeholder implementations," tests must exist and pass, backpressure rejects invalid output. I mapped these directly to grading (reject surface-level answers, capture why answers are wrong, push for depth). The 1-5 scoring scale and specific grading process steps are my design. |
-| `progress-tracking.md` | Persistent state file tracking learner competency across sessions | **60%** | Directly mapped from Huntley's `IMPLEMENTATION_PLAN.md` and `fix_plan.md` — the file that persists between loops, drives what happens next, is disposable/regeneratable, and should be kept current. The Ralph Playbook repo explicitly documents this pattern. The specific table structure, status categories, session history format, and cleanup rules are my design. |
-| `practice-labs.md` | Hands-on lab exercise generation with verification | **35%** | The X post confirms practice labs exist ("it told me to setup LVM stuff on a GCP VM"). Huntley's "loop back" principle (loop the agent back on itself for evaluation) maps to verification steps. But the specific lab types, generation rules, environment options, and file format are largely my design. |
-| `technical-verification.md` | Ensuring learning materials are technically accurate | **50%** | Directly inspired by Huntley's "if you find inconsistencies in the specs then use the oracle and update the specs" and "don't assume not implemented." The principle of verifying before teaching is solid Huntley. The specific verification methods, handling uncertainty, and integration points are my extrapolation. |
+| `README.md` | Overview of the system, how files relate, how to use it | **85%** | The mapping from Ralph concepts to learning concepts is now well-grounded. The specs post confirms SPECS.md overview format and the formula. The stdlib post confirms behavioral rules concept. The 15% gap: specific application to learning (vs. coding) is our interpretation. |
+| `interactive-quiz.md` | Socratic Q&A tutoring — agent asks, learner answers, agent corrects and expands | **55%** | The X post confirms WHAT this does. The loopback pattern from the specs post ("keep going until implemented" = keep quizzing until understood) now directly grounds the iterative approach. The HOW (specific workflow steps, question types) is our extrapolation. |
+| `quiz-workflow.md` | End-to-end quiz lifecycle — generation, administration, adaptive difficulty | **60%** | The X post confirms adaptive quiz behavior. The loopback and evaluation pillars from the formula now directly ground the quiz loop. The specific generation rules, difficulty tiers, and thresholds are our design. |
+| `grading-workflow.md` | How to grade quiz responses — the backpressure mechanism | **65%** | Backpressure philosophy is well-documented. Grading is now grounded as the "evaluation" component of the formula. The 1-5 scoring scale and specific grading process are our design. |
+| `progress-tracking.md` | Persistent state file tracking learner competency across sessions | **70%** | Directly mapped from IMPLEMENTATION_PLAN.md. The specs post confirms the SPECS.md overview pattern (table linking to details) which maps to the progress overview. The specific table structure and cleanup rules are our design. |
+| `practice-labs.md` | Hands-on lab exercise generation with verification | **40%** | The X post confirms practice labs exist. The loopback pattern applies. The specific lab types, generation rules, and file format are largely our design. |
+| `technical-verification.md` | Ensuring learning materials are technically accurate | **65%** | The self-improvement loop from the stdlib post ("Look at rules. What's missing?") now fully grounds the meta-verification pattern. The specific verification methods are our extrapolation. |
+
+### `.agents/stdlib/`
+
+| File | Purpose | Fidelity | Explanation |
+|------|---------|----------|-------------|
+| `README.md` | Stdlib overview, rule structure, authoring guide | **80%** | Rule structure (description, globs, filters, actions, examples, metadata) directly sourced from stdlib post. Authoring workflow ("observe bad behavior → author rule") directly sourced. |
+| `explanation-format.md` | How to format explanations for the learner | **70%** | Follows the stdlib rule structure exactly. The specific explanation guidelines are our design for learning. |
+| `handle-uncertainty.md` | How to handle "I don't know" responses | **70%** | Follows the stdlib rule structure. The guided discovery approach is our adaptation. |
+| `verify-before-teaching.md` | Always verify claims before teaching | **75%** | Directly from "use the oracle and update the specs." Rule structure from stdlib post. |
+| `break-down-weak-topics.md` | Break topics into sub-topics when score is low | **70%** | Follows from "don't assume not implemented" applied to learning. Rule structure from stdlib post. |
 
 ### Other folders
 
@@ -81,25 +104,30 @@ Read these in this order to understand the system from foundations up:
 
 These three are different modes of the same loop. They all read from progress, they all feed grades back into progress.
 
-### Layer 5: Quality Control
-**`specs/technical-verification.md`** — Ensures the agent isn't teaching you wrong things. Meta-level concern that applies to all other specs.
+### Layer 5: The Behavioral Rules
+**`stdlib/*.md`** — Rules that steer agent behavior. From the stdlib post: "instead of 'implement XYZ' you should be thinking of building out a stdlib of thousands of prompting rules." These rules are composed like unix pipes — each one constrains one aspect of behavior (explanation format, uncertainty handling, verification, topic decomposition). The stdlib grows over time as you observe and correct agent behavior.
 
-### Layer 6: The Entry Point
-**`specs/README.md`** — Ties everything together. Explains how the files relate, how to use the system, and maps Huntley concepts to learning concepts.
+### Layer 6: Quality Control
+**`specs/technical-verification.md`** — Ensures the agent isn't teaching you wrong things. Meta-level concern that applies to all other specs. Now includes the self-improvement loop from the stdlib post: "Look at the rules. What is missing? What does not follow best practice."
+
+### Layer 7: The Entry Point
+**`specs/README.md`** — Ties everything together. The SPECS.md overview (from ghuntley.com/specs/: "Create a SPECS.md in the root of the directory which is an overview document that contains a table that links to all the specs"). Maps Huntley concepts to learning concepts. Documents the formula.
 
 ---
 
 ## What's Missing / Needs Your Input
 
-These are areas where the paywalled content means I was working with incomplete information. Marked with `<!-- YOUR INPUT NEEDED -->` inside the relevant files.
+Marked with `<!-- YOUR INPUT NEEDED -->` inside the relevant files.
 
-1. **Internal spec structure** — I couldn't see how Huntley formats a spec file internally (ghuntley.com/specs is paywalled). The current format is my best guess. If you get access to the specs post, you may want to restructure.
+1. ~~**Internal spec structure**~~ — **Resolved.** The specs post confirms: one spec per domain topic, SPECS.md overview with table linking to all specs. Our current format is close to Huntley's pattern.
 
-2. **Stdlib patterns** — Huntley's stdlib concept (ghuntley.com/stdlib, paywalled) is about creating reusable "standard library" patterns that steer agent behavior. I don't have a `stdlib/` equivalent in this repo. You might want one for things like "how to format explanations" or "how to structure reading materials."
+2. ~~**Stdlib patterns**~~ — **Resolved.** The stdlib post is now fully accessible. We've created `.agents/stdlib/` with four example rules following Huntley's exact rule structure (description, globs, filters, actions, examples, metadata). Grow this library over time by observing agent behavior and authoring new rules.
 
-3. **PROMPT.md and loop.sh** — The actual launcher files (what you'd pipe into Claude Code) are NOT included yet. The Ralph Playbook repo has clear templates for these. I left them out because they depend on your specific CLI setup.
+3. **PROMPT.md and loop.sh** — The actual launcher files are NOT included yet. The Ralph Playbook repo has templates. The specs post provides the key loopback prompt: "Study @SPECS.md for functional specifications. Study @.cursor for technical requirements. Implement what is not implemented. Create tests. Run build and verify." Adapt this for learning.
 
-4. **Adaptation thresholds** — The specific numbers I used (80% for mastery, 50% for weakness escalation, 2-3 consecutive quizzes) are my invention. You should tune these based on experience.
+4. **Adaptation thresholds** — The specific numbers (80% mastery, 50% weakness escalation) are our design. The stdlib approach says: start with rough values, observe failures, author rules to refine. ~45% accuracy expected initially — frequent steering needed.
+
+5. **Huntley's backpressure post** — ghuntley.com/pressure/ remains paywalled. We have the core philosophy from banay.me and the other posts, but Huntley's own elaboration may contain additional insights.
 
 ---
 

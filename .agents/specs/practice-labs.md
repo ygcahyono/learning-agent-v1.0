@@ -1,6 +1,6 @@
 # Spec: Practice Labs
 
-> **Source fidelity: 35%** — The X post confirms practice labs exist ("it told me to setup LVM stuff on a GCP VM, which is kind of cool"). Huntley's "loop back" principle (loop the agent back on itself for evaluation) maps to verification steps. But the specific lab types, generation rules, file format, and verification approach are largely my design.
+> **Source fidelity: 40%** — The X post confirms practice labs exist ("it told me to setup LVM stuff on a GCP VM, which is kind of cool"). Huntley's "loop back" principle maps to verification steps. The specs post confirms "keep going until implemented" applies here too — keep doing labs until the skill is demonstrated. The specific lab types, generation rules, file format, and verification approach are largely our design.
 
 ## Purpose
 
@@ -20,14 +20,9 @@ From Huntley (ghuntley.com/ralph/):
 ## Lab Types
 
 <!-- YOUR INPUT NEEDED
-The four lab types below are my design. The X post only confirms
-that guided setup-style labs were generated. The other types
-(scenario, troubleshooting, design) are my extrapolation.
-
-You should decide:
-- Which lab types make sense for your learning topics
-- Whether you even want multiple types or just one
-- Whether labs should be mandatory or optional in the loop
+The four lab types below are our design. The X post only confirms
+guided setup-style labs. Consider authoring stdlib rules for lab
+quality if you observe the agent generating poor labs.
 -->
 
 ### Type 1: Guided Setup
@@ -72,9 +67,8 @@ sudo lvs --noheadings -o lv_name,vg_name,lv_size
 ## Lab File Format
 
 <!-- YOUR INPUT NEEDED
-This entire format is my design. The original author's practice
-files (01-linux-practice.md, 02-storage-practice.md, etc.) are
-not publicly available. Adjust or simplify as needed.
+This format is our design. Huntley says "let Ralph dictate format."
+You may want to let the agent evolve the lab format over time.
 -->
 
 Saved to `practice/`:

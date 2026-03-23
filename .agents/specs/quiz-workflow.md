@@ -1,6 +1,6 @@
 # Spec: Quiz Workflow
 
-> **Source fidelity: 45%** — The X post confirms: quizzes are mostly open-ended, they get graded, and the system adapts based on grades ("it adjusts the next quiz based on the grade it gave me, so eventually it stops generating quizzes on stuff I'm already decent at"). The adaptive behavior is confirmed. The specific generation rules, difficulty tiers, thresholds, and file format are my design.
+> **Source fidelity: 60%** — The X post confirms: quizzes are mostly open-ended, they get graded, and the system adapts based on grades. The loopback pattern from ghuntley.com/specs/ ("keep going until implemented") now directly grounds the iterative quiz loop. Evaluation is one of the four pillars of the formula `/specs + /stdlib + loopback + evaluation`. The specific generation rules, difficulty tiers, thresholds, and file format are our design.
 
 ## Purpose
 
@@ -8,12 +8,14 @@ The quiz workflow governs how written quizzes are generated, taken, graded, and 
 
 ## Why This File Exists
 
-Quizzes are the primary backpressure mechanism. From the X post author: the system "generates quiz (mostly open ended question) and then grade me based on my explanation & understanding, and it adjusts the next quiz based on the grade it gave me, so eventually it stops generating quizzes on stuff I'm already decent at."
+Quizzes are the primary **evaluation** mechanism — one of the four pillars of Huntley's formula. From the X post author: the system "generates quiz (mostly open ended question) and then grade me based on my explanation & understanding, and it adjusts the next quiz based on the grade it gave me, so eventually it stops generating quizzes on stuff I'm already decent at."
 
 This confirms three things:
 1. Quizzes are open-ended (not multiple choice)
 2. Grading is based on explanation and understanding (not keywords)
 3. The system is adaptive — it stops asking about mastered topics
+
+The **loopback** pattern from ghuntley.com/specs/ grounds the quiz loop directly: "Keep going until implemented. Did the LLM go on a bad path? Restart a new chat session and use the above prompt. Keep doing it until everything is implemented." Applied to learning: keep generating quizzes until everything is understood. Restart sessions. Same specs, same progress file, new quiz.
 
 ## What's Confirmed
 
@@ -35,9 +37,10 @@ From the X post:
 ### Generation Rules
 
 <!-- YOUR INPUT NEEDED
-These rules are my design. The confirmed principle is "adaptive,
-open-ended, graded on understanding." The specific rules below
-are my implementation of that principle. Adjust as needed.
+These rules are our design. The confirmed principle is "adaptive,
+open-ended, graded on understanding." Consider authoring stdlib
+rules for quiz generation quality (following the stdlib pattern:
+observe bad quizzes → ask agent to write a rule to prevent them).
 -->
 
 1. **Open-ended questions** — Ask the learner to explain, describe, compare, design.
@@ -49,13 +52,8 @@ are my implementation of that principle. Adjust as needed.
 ### Difficulty Tiers
 
 <!-- YOUR INPUT NEEDED
-The tier system is my design. The original author may have used
-a different difficulty model or let the agent decide.
-
-Tier 1: "What is X?"
-Tier 2: "How would you configure X for Y?"
-Tier 3: "Why choose X over Y? What are the trade-offs?"
-Tier 4: "What happens when X fails during Y? How would you recover?"
+The tier system is our design. You may want to let the agent decide
+or author stdlib rules that govern difficulty progression.
 -->
 
 **Tier 1 — Foundational:** Define and explain basic concepts.
@@ -92,11 +90,9 @@ Focus areas: {targeted weak areas from progress.md}
 ```
 
 <!-- YOUR INPUT NEEDED
-This file format is my design. You may want:
-- Different sections
-- A separate answer file (so quizzes can be retaken)
-- Metadata fields (time spent, difficulty rating by learner)
-- The agent to evolve its own format
+This file format is our design. Huntley says "let Ralph dictate
+the format that works best for it." You may want to let the agent
+evolve its own quiz format over time.
 -->
 
 ## Adaptive Behavior (the core loop)
@@ -116,18 +112,11 @@ Generate quiz (weighted to weak areas)
 ### Adaptation Rules
 
 <!-- YOUR INPUT NEEDED
-The thresholds below are my invention. The X post confirms
-adaptive behavior exists but does not specify thresholds.
-
-Key numbers to tune:
-- Mastery threshold: I used 80% across 2-3 quizzes
-- Weakness escalation: I used <50% across 2+ quizzes
-- These should be adjusted based on your experience
-
-You may also want to:
-- Use different thresholds per topic
-- Let the agent decide when a topic is mastered
-- Add a "time since last studied" decay factor
+The thresholds below are our design. The X post confirms adaptive
+behavior exists but does not specify thresholds. Huntley's stdlib
+approach suggests: start with rough thresholds, observe where they
+fail, then author rules to refine them. ~45% accuracy expected
+initially — frequent steering needed (ghuntley.com/stdlib/).
 -->
 
 1. **Topic mastery** — Score ≥ 80% across 2-3 consecutive quizzes → reduce frequency, increase difficulty. Don't eliminate entirely.

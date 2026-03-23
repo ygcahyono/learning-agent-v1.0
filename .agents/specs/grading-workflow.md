@@ -1,14 +1,18 @@
 # Spec: Grading Workflow
 
-> **Source fidelity: 55%** — Backpressure philosophy is well-documented in accessible Huntley posts. "Capture the why," "no placeholders," and "backpressure rejects invalid output" are directly sourced. The 1-5 scoring scale, specific grading process steps, and feedback format are my design.
+> **Source fidelity: 65%** — Backpressure philosophy is well-documented in accessible Huntley posts. "Capture the why," "no placeholders," and "backpressure rejects invalid output" are directly sourced. Grading is now grounded as the "evaluation" component of the `/specs + /stdlib + loopback + evaluation` formula (sourced from ghuntley.com/specs/). The 1-5 scoring scale, specific grading process steps, and feedback format are my design.
 
 ## Purpose
 
-Grading is the backpressure mechanism. Without grading, there is no feedback signal, and without feedback, the learning loop cannot adapt.
+Grading is the **evaluation** component of the formula `/specs + /stdlib + loopback + evaluation`. Without grading, there is no feedback signal, and without feedback, the learning loop cannot adapt.
 
 ## Why This File Exists
 
-In Huntley's system, backpressure is what prevents the agent from producing garbage. Tests reject invalid code. Grading rejects surface-level understanding.
+In Huntley's system, backpressure is what prevents the agent from producing garbage. Tests reject invalid code. The formula from ghuntley.com/specs/ makes evaluation explicit: it's one of the four pillars. For coding, evaluation = `cargo test`, `cargo build`, `cargo clippy`. For learning, evaluation = grading and quizzes.
+
+From ghuntley.com/specs/: "The secret to hands-free vibe coding is really just this prompt when used in conjunction with stdlib and specs library... Study @SPECS.md for functional specifications. Implement what is not implemented. Create tests. Run a 'cargo build' and verify the application works."
+
+Applied to learning: the "create tests and verify" step IS grading. Grading rejects surface-level understanding the same way `cargo test` rejects broken code.
 
 **Directly sourced principles:**
 
@@ -54,17 +58,15 @@ From the backpressure philosophy: a grade that doesn't reflect reality is wasted
 ## Grading Scale
 
 <!-- YOUR INPUT NEEDED
-The 1-5 scale below is entirely my design. Huntley does not prescribe
-a grading scale — his backpressure is binary (tests pass or fail,
-build compiles or doesn't).
+The 1-5 scale below is our design. Huntley's backpressure is binary
+(tests pass or fail, build compiles or doesn't). However, the stdlib
+post reveals that rules use actions like "reject" and "suggest" —
+not just pass/fail — so a more granular scale is reasonable.
 
-You have several options:
+Options:
 - Keep the 1-5 scale (more granular, better for tracking trends)
 - Use pass/fail (simpler, closer to Huntley's original binary backpressure)
-- Use a different scale entirely
 - Let the agent decide the scale (Huntley: "let Ralph dictate format")
-
-Current design:
 -->
 
 ### Score: 1 — No Understanding
@@ -90,8 +92,10 @@ Current design:
 ## Grading Process
 
 <!-- YOUR INPUT NEEDED
-The step-by-step process below is my design. The original author
-may have a simpler or different approach. Adjust as needed.
+The step-by-step process below is our design. Adjust as needed.
+The stdlib rule structure (filters → actions → examples) suggests
+grading could also be structured as rules — e.g., a "grading" stdlib
+rule that rejects surface-level answers automatically.
 -->
 
 1. **Read the question and model answer** — Reference readings for source material

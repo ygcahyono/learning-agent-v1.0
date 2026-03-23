@@ -1,6 +1,6 @@
 # Spec: Technical Verification
 
-> **Source fidelity: 50%** — Directly inspired by Huntley's "if you find inconsistencies in the specs then use the oracle and update the specs" and "don't assume not implemented." The principle of verifying before acting is core Huntley. The specific verification methods and process are my extrapolation.
+> **Source fidelity: 65%** — Directly inspired by Huntley's "if you find inconsistencies in the specs then use the oracle and update the specs" and "don't assume not implemented." The stdlib post adds the self-improvement loop: "Look at the rules. What is missing? What does not follow best practice." Applied to learning: look at the learning materials — what's missing, what's inaccurate, what doesn't follow best practice? The specific verification methods are our extrapolation.
 
 ## Purpose
 
@@ -18,6 +18,21 @@ From Huntley (ghuntley.com/ralph/):
 
 - A lesson from building CURSED: "my specification for the lexer defined a keyword twice for two opposing scenarios, which resulted in a lot of time wasted. Ralph was doing stupid shit, and I guess it's easy to blame the tools instead of the operator."
   → Applied to learning: bad specs (inaccurate readings) produce bad learning
+
+## The Self-Improvement Loop (from ghuntley.com/stdlib/)
+
+The stdlib post reveals a critical self-improvement pattern:
+
+> "Look at the rules in @.cursor. What is missing? What does not follow best practice."
+
+This is a meta-verification loop: the agent examines its own rules and identifies gaps. Applied to learning:
+
+1. **Look at the learning materials** — What's missing? What's inaccurate?
+2. **Look at the grading** — Are we grading on the right things?
+3. **Look at the rules** — Are our stdlib rules catching the right problems?
+4. **Author new rules** — When you observe bad behavior, ask the agent to write a rule to prevent it.
+
+This creates exponential improvement: "Improvements come slowly in the beginning, but your gains increase rapidly over time." (ghuntley.com/stdlib/)
 
 ## When to Verify
 
@@ -43,20 +58,12 @@ From Huntley (ghuntley.com/ralph/):
 ## Verification Methods
 
 <!-- YOUR INPUT NEEDED
-Huntley refers to "the oracle" but doesn't specify verification
-methods in detail (that content may be in the paywalled posts).
-
-The methods below are my design:
-
-1. Web research — using search tools (EXA, web search, etc.)
-2. Official documentation — man pages, vendor docs, RFCs
-3. Cross-referencing — when sources disagree, prefer official > blog
-
-You should decide:
-- What tools your agent has access to for verification
-  (EXA, web search, MCP servers, etc.)
+The verification methods below are our design. Huntley refers to
+"the oracle" for verification. You should decide:
+- What tools your agent has access to (EXA, web search, MCP servers)
 - How much verification overhead is acceptable per session
 - Whether to verify everything or only flag uncertain claims
+- Whether to author stdlib rules for verification behavior
 -->
 
 ### 1. Web Research (Primary)
@@ -87,14 +94,11 @@ If the agent cannot verify a claim:
 <!-- YOUR INPUT NEEDED
 Open questions:
 
-- How aggressive should verification be? Verify everything
-  (slow, thorough) or only verify when uncertain (faster)?
+- How aggressive should verification be? Huntley's stdlib
+  approach: start with light verification, observe failures,
+  author rules to catch them. ~45% accuracy expected initially.
 
-- Should the agent document its verification sources in the
-  readings? (Creates audit trail but adds noise)
-
-- For topics you already know well, do you want the agent to
-  still verify, or trust your domain knowledge as an input?
+- Should the agent document its verification sources?
 
 - The original X post author used EXA for web research.
   What tools will your agent have access to?
