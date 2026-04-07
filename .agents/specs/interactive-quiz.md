@@ -26,15 +26,13 @@ Adapted: "Study @specs/README.md. Read @progress.md. Quiz on what is not yet und
 
 ## Workflow
 
-<!-- YOUR INPUT NEEDED
-The workflow below is our design applying Huntley's principles.
-
-Key decisions you should validate:
-- Number of questions per session (we suggest 3-5)
-- Whether to go deep on one topic vs. broad across several
-- How aggressive the follow-up probing should be
-- Whether the agent should give hints or let the learner struggle
--->
+<!-- DECIDED 2026-03-23:
+- 3-5 questions per session (confirmed).
+- Focus mode: Agent decides based on progress — deep dive on weak topics,
+  mixed when things are balanced.
+- Follow-up probing: Aggressive on weak areas, lighter on strong areas.
+- Hints: Give hints after a pause. If learner says "I don't know" or seems
+  stuck, offer a hint before revealing the answer. -->
 
 ### 1. Orient
 - Read `progress.md` for current learner state
@@ -70,25 +68,54 @@ After the learner responds:
 - Weak answer → ask simpler follow-up to build incrementally
 - Strong answer → probe deeper or move to adjacent topic
 
-### 7. Update Progress
+### 7. Save Session Transcript
+<!-- DECIDED 2026-03-24: Save full Q&A to sessions/ folder. -->
+- Save the full Q&A transcript to `sessions/{topic-slug}-{YYYY-MM-DD}.md`
+- Use kebab-case for topic slug (e.g., `linear-algebra-basics-2026-03-24.md`)
+- File format:
+
+```markdown
+# Session: {Topic Name} — Session {N}
+Date: {YYYY-MM-DD} | Type: Interactive | Score: {TBD or final %}
+
+---
+
+## Q1
+**Agent:** {question as asked}
+
+**You:** {learner's answer verbatim}
+
+**Feedback:** {agent's evaluation and expansion}
+
+---
+
+## Q2
+...
+
+---
+
+## Notes
+- {key observations about learner's understanding}
+- {gaps identified}
+- {next session plan}
+```
+
+- Save after **every Q&A exchange** — do not wait until end of session
+- Do not alter the learner's answer — record it verbatim
+
+### 8. Update Progress
 - Update `progress.md` per the progress-tracking spec
 
 ## Question Types
 
-<!-- YOUR INPUT NEEDED
-These question categories are our design. You may want to:
-- Add domain-specific question types for your topics
-- Remove categories that don't apply
-- Let the agent evolve its own question types over time
-- Author stdlib rules for question formatting (following Huntley's
-  pattern: observe bad questions → ask agent to write a rule)
--->
+<!-- DECIDED 2026-03-23: Keep current question categories. Start loose, evolve
+via stdlib — when bad questions are observed, author rules to improve them. -->
 
 **Conceptual:** "Explain how [concept] works and why it matters."
-**Troubleshooting:** "A system is showing [symptom]. Walk through your diagnosis."
+**Diagnostic:** "A model is showing [symptom, e.g., high bias, overfitting]. Walk through your diagnosis."
 **Comparison:** "What's the difference between [A] and [B]? When would you use each?"
-**Design:** "How would you set up [system] for [requirement]?"
-**Deep Dive:** "You mentioned [concept]. What happens under the hood when [scenario]?"
+**Design:** "How would you design a pipeline for [task, e.g., classifying customer churn]?"
+**Deep Dive:** "You mentioned [concept]. What happens mathematically when [scenario]?"
 
 ## Anti-Patterns
 
@@ -103,16 +130,9 @@ These follow from Huntley's principles:
 - **Do not ask yes/no questions** — These don't test understanding.
 - **Do not provide hints too early** — Let the learner sit with not knowing.
 
-<!-- YOUR INPUT NEEDED
-The following aspects are open for your design. Note that the
-loopback pattern means sessions are cheap — you can always run
-another one. "Keep going until implemented" = keep going until
-understood. So err on the side of shorter, more frequent sessions.
-
-- Session length: How many questions before ending? We suggest 3-5.
-- Session cadence: How often? The loopback pattern says: as often
-  as needed. "Did the LLM go on a bad path? Restart a new chat
-  session... Keep doing it until everything is implemented."
-- Mixed vs. focused: One topic deeply or touch multiple?
-- How to handle "I don't know": See stdlib/handle-uncertainty.md
--->
+<!-- DECIDED 2026-03-23:
+- Session length: 3-5 questions. Short, focused sessions.
+- Session cadence: As often as needed (loopback pattern).
+- Mixed vs focused: Agent decides based on progress data.
+- "I don't know" handling: See stdlib/handle-uncertainty.md — give hints
+  after a pause before revealing the answer. -->
